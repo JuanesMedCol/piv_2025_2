@@ -214,320 +214,54 @@ YEM,Yemen,False,Middle East & North Africa,Western Asia
 ZAF,South Africa,False,Sub-Saharan Africa,Southern Africa
 ZMB,Zambia,False,Sub-Saharan Africa,Eastern Africa
 ZWE,Zimbabwe,False,Sub-Saharan Africa,Eastern Africa
-AFG,Afghanistan,False,South Asia,South Asia
-ALB,Albania,False,Europe & Central Asia,Southern Europe
-DEU,Germany,False,Europe & Central Asia,Western Europe
-AND,Andorra,False,Europe & Central Asia,Southern Europe
-AGO,Angola,False,Sub-Saharan Africa,Middle Africa
-ATG,Antigua and Barbuda,False,Latin America & Caribbean,Caribbean
-SAU,Saudi Arabia,False,Middle East & North Africa,Western Asia
-DZA,Algeria,False,Middle East & North Africa,Northern Africa
-ARG,Argentina,False,Latin America & Caribbean,South America
-ARM,Armenia,False,Europe & Central Asia,Western Asia
-ABW,Aruba,False,Latin America & Caribbean,Caribbean
-AUS,Australia,False,East Asia & Pacific,Australia and New Zealand
-AUT,Austria,False,Europe & Central Asia,Western Europe
-AZE,Azerbaijan,False,Europe & Central Asia,Western Asia
-BHS,Bahamas,False,Latin America & Caribbean,Caribbean
-BHR,Bahrain,False,Middle East & North Africa,Western Asia
-BGD,Bangladesh,False,South Asia,South Asia
-BRB,Barbados,False,Latin America & Caribbean,Caribbean
-BLR,Belarus,False,Europe & Central Asia,Eastern Europe
-BEL,Belgium,False,Europe & Central Asia,Western Europe
-BLZ,Belize,False,Latin America & Caribbean,Central America
-BEN,Benin,False,Sub-Saharan Africa,Western Africa
-BMU,Bermuda,False,North America,Northern America
-BTN,Bhutan,False,South Asia,South Asia
-BOL,Bolivia,False,Latin America & Caribbean,South America
-BIH,Bosnia and Herzegovina,False,Europe & Central Asia,Southern Europe
-BWA,Botswana,False,Sub-Saharan Africa,Southern Africa
-BRA,Brazil,False,Latin America & Caribbean,South America
-BRN,Brunei Darussalam,False,East Asia & Pacific,South-Eastern Asia
-BGR,Bulgaria,False,Europe & Central Asia,Eastern Europe
-BFA,Burkina Faso,False,Sub-Saharan Africa,Western Africa
-BDI,Burundi,False,Sub-Saharan Africa,Eastern Africa
-CPV,Cabo Verde,False,Sub-Saharan Africa,Western Africa
-KHM,Cambodia,False,East Asia & Pacific,South-Eastern Asia
-CMR,Cameroon,False,Sub-Saharan Africa,Middle Africa
-CAN,Canada,False,North America,Northern America
-TCD,Chad,False,Sub-Saharan Africa,Middle Africa
-CHL,Chile,False,Latin America & Caribbean,South America
-CHN,China,False,East Asia & Pacific,Eastern Asia
-CYP,Cyprus,False,Europe & Central Asia,Western Asia
-COL,Colombia,False,Latin America & Caribbean,South America
-COM,Comoros,False,Sub-Saharan Africa,Eastern Africa
-COG,Congo,False,Sub-Saharan Africa,Middle Africa
-COD,"""Congo, Dem. Rep.""",False,Sub-Saharan Africa,Middle Africa
-KOR,"""Korea, Rep.""",False,East Asia & Pacific,Eastern Asia
-PRK,"""Korea, Dem. People’s Rep.""",False,East Asia & Pacific,Eastern Asia
-CRI,Costa Rica,False,Latin America & Caribbean,Central America
-CIV,Côte d'Ivoire,False,Sub-Saharan Africa,Western Africa
-HRV,Croatia,False,Europe & Central Asia,Southern Europe
-CUB,Cuba,False,Latin America & Caribbean,Caribbean
-CUW,Curaçao,False,Latin America & Caribbean,Caribbean
-DNK,Denmark,False,Europe & Central Asia,Northern Europe
-DJI,Djibouti,False,Middle East & North Africa,Eastern Africa
-DMA,Dominica,False,Latin America & Caribbean,Caribbean
-ECU,Ecuador,False,Latin America & Caribbean,South America
-EGY,Egypt,False,Middle East & North Africa,Northern Africa
-SLV,El Salvador,False,Latin America & Caribbean,Central America
-ARE,United Arab Emirates,False,Middle East & North Africa,Western Asia
-ERI,Eritrea,False,Sub-Saharan Africa,Eastern Africa
-SVN,Slovenia,False,Europe & Central Asia,Southern Europe
-ESP,Spain,False,Europe & Central Asia,Southern Europe
-USA,United States,False,North America,Northern America
-EST,Estonia,False,Europe & Central Asia,Northern Europe
-SWZ,Eswatini,False,Sub-Saharan Africa,Southern Africa
-ETH,Ethiopia,False,Sub-Saharan Africa,Eastern Africa
-RUS,Russian Federation,False,Europe & Central Asia,Eastern Europe
-FJI,Fiji,False,East Asia & Pacific,Melanesia
-PHL,Philippines,False,East Asia & Pacific,South-Eastern Asia
-FIN,Finland,False,Europe & Central Asia,Northern Europe
-FRA,France,False,Europe & Central Asia,Western Europe
-GAB,Gabon,False,Sub-Saharan Africa,Middle Africa
-GMB,Gambia,False,Sub-Saharan Africa,Western Africa
-GEO,Georgia,False,Europe & Central Asia,Western Asia
-GHA,Ghana,False,Sub-Saharan Africa,Western Africa
-GIB,Gibraltar,False,Europe & Central Asia,Southern Europe
-GRD,Grenada,False,Latin America & Caribbean,Caribbean
-GRC,Greece,False,Europe & Central Asia,Southern Europe
-GRL,Greenland,False,North America,Northern America
-GUM,Guam,False,East Asia & Pacific,Micronesia
-GTM,Guatemala,False,Latin America & Caribbean,Central America
-GIN,Guinea,False,Sub-Saharan Africa,Western Africa
-GNQ,Equatorial Guinea,False,Sub-Saharan Africa,Middle Africa
-GNB,Guinea-Bissau,False,Sub-Saharan Africa,Western Africa
-GUY,Guyana,False,Latin America & Caribbean,South America
-HTI,Haiti,False,Latin America & Caribbean,Caribbean
-HND,Honduras,False,Latin America & Caribbean,Central America
-HKG,"""Hong Kong SAR, China""",False,East Asia & Pacific,Eastern Asia
-HUN,Hungary,False,Europe & Central Asia,Eastern Europe
-IND,India,False,South Asia,South Asia
-IDN,Indonesia,False,East Asia & Pacific,South-Eastern Asia
-IRN,Iran,False,Middle East & North Africa,Southern Asia
-IRQ,Iraq,False,Middle East & North Africa,Western Asia
-IRL,Ireland,False,Europe & Central Asia,Northern Europe
-IMN,Isle of Man,False,Europe & Central Asia,Northern Europe
-MAF,Saint Martin (French part),False,Latin America & Caribbean,Caribbean
-ISL,Iceland,False,Europe & Central Asia,Northern Europe
-CYM,Cayman Islands,False,Latin America & Caribbean,Caribbean
-FRO,Faroe Islands,False,Europe & Central Asia,Northern Europe
-MHL,Marshall Islands,False,East Asia & Pacific,Micronesia
-SLB,Solomon Islands,False,East Asia & Pacific,Melanesia
-TCA,Turks and Caicos Islands,False,Latin America & Caribbean,Caribbean
-VIR,U.S. Virgin Islands,False,Latin America & Caribbean,Caribbean
-VGB,British Virgin Islands,False,Latin America & Caribbean,Caribbean
-ISR,Israel,False,Middle East & North Africa,Western Asia
-ITA,Italy,False,Europe & Central Asia,Southern Europe
-JAM,Jamaica,False,Latin America & Caribbean,Caribbean
-JPN,Japan,False,East Asia & Pacific,Eastern Asia
-JOR,Jordan,False,Middle East & North Africa,Western Asia
-KAZ,Kazakhstan,False,Europe & Central Asia,Western Asia
-KEN,Kenya,False,Sub-Saharan Africa,Eastern Africa
-KGZ,Kyrgyz Republic,False,Europe & Central Asia,Western Asia
-KIR,Kiribati,False,East Asia & Pacific,Micronesia
-KWT,Kuwait,False,Middle East & North Africa,Western Asia
-LSO,Lesotho,False,Sub-Saharan Africa,Southern Africa
-LVA,Latvia,False,Europe & Central Asia,Northern Europe
-LBN,Lebanon,False,Middle East & North Africa,Western Asia
-LBR,Liberia,False,Sub-Saharan Africa,Western Africa
-LBY,Libya,False,Middle East & North Africa,Northern Africa
-LIE,Liechtenstein,False,Europe & Central Asia,Western Europe
-LTU,Lithuania,False,Europe & Central Asia,Northern Europe
-LUX,Luxembourg,False,Europe & Central Asia,Western Europe
-MKD,North Macedonia,False,Europe & Central Asia,Southern Europe
-MDG,Madagascar,False,Sub-Saharan Africa,Eastern Africa
-MYS,Malaysia,False,East Asia & Pacific,South-Eastern Asia
-MWI,Malawi,False,Sub-Saharan Africa,Eastern Africa
-MDV,Maldives,False,South Asia,South Asia
-MLI,Mali,False,Sub-Saharan Africa,Western Africa
-MLT,Malta,False,Europe & Central Asia,Southern Europe
-MNP,Northern Mariana Islands,False,East Asia & Pacific,Micronesia
-MAR,Morocco,False,Middle East & North Africa,Northern Africa
-MUS,Mauritius,False,Sub-Saharan Africa,Eastern Africa
-MRT,Mauritania,False,Sub-Saharan Africa,Western Africa
-MEX,Mexico,False,Latin America & Caribbean,Central America
-FSM,"""Micronesia, Fed. Sts.""",False,East Asia & Pacific,Micronesia
-MCO,Monaco,False,Europe & Central Asia,Western Europe
-MNG,Mongolia,False,East Asia & Pacific,Eastern Asia
-MNE,Montenegro,False,Europe & Central Asia,Southern Europe
-MOZ,Mozambique,False,Sub-Saharan Africa,Eastern Africa
-MMR,Myanmar,False,East Asia & Pacific,South-Eastern Asia
-NAM,Namibia,False,Sub-Saharan Africa,Southern Africa
-NRU,Nauru,False,East Asia & Pacific,Micronesia
-NPL,Nepal,False,South Asia,South Asia
-NIC,Nicaragua,False,Latin America & Caribbean,Central America
-NER,Niger,False,Sub-Saharan Africa,Western Africa
-NGA,Nigeria,False,Sub-Saharan Africa,Western Africa
-NOR,Norway,False,Europe & Central Asia,Northern Europe
-NCL,New Caledonia,False,East Asia & Pacific,Melanesia
-NZL,New Zealand,False,East Asia & Pacific,Australia and New Zealand
-OMN,Oman,False,Middle East & North Africa,Western Asia
-NLD,Netherlands,False,Europe & Central Asia,Western Europe
-PAK,Pakistan,False,South Asia,South Asia
-PLW,Palau,False,East Asia & Pacific,Micronesia
-PAN,Panama,False,Latin America & Caribbean,Central America
-PNG,Papua New Guinea,False,East Asia & Pacific,Melanesia
-PRY,Paraguay,False,Latin America & Caribbean,South America
-PER,Peru,False,Latin America & Caribbean,South America
-PYF,French Polynesia,False,East Asia & Pacific,Polynesia
-POL,Poland,False,Europe & Central Asia,Eastern Europe
-PRT,Portugal,False,Europe & Central Asia,Southern Europe
-PRI,Puerto Rico,False,Latin America & Caribbean,Caribbean
-QAT,Qatar,False,Middle East & North Africa,Western Asia
-MAC,"""Macao SAR, China""",False,East Asia & Pacific,Eastern Asia
-GBR,United Kingdom,False,Europe & Central Asia,Northern Europe
-SYR,Syrian Arab Republic,False,Middle East & North Africa,Western Asia
-CAF,Central African Republic,False,Sub-Saharan Africa,Middle Africa
-CZE,Czechia,False,Europe & Central Asia,Eastern Europe
-MDA,Moldova,False,Europe & Central Asia,Eastern Europe
-LAO,Lao PDR,False,East Asia & Pacific,South-Eastern Asia
-DOM,Dominican Republic,False,Latin America & Caribbean,Caribbean
-SVK,Slovak Republic,False,Europe & Central Asia,Eastern Europe
-PSE,West Bank and Gaza,False,Middle East & North Africa,Western Asia
-ROU,Romania,False,Europe & Central Asia,Eastern Europe
-RWA,Rwanda,False,Sub-Saharan Africa,Eastern Africa
-KNA,Saint Kitts and Nevis,False,Latin America & Caribbean,Caribbean
-WSM,Samoa,False,East Asia & Pacific,Polynesia
-ASM,American Samoa,False,East Asia & Pacific,Polynesia
-SMR,San Marino,False,Europe & Central Asia,Southern Europe
-VCT,Saint Vincent and the Grenadines,False,Latin America & Caribbean,Caribbean
-LCA,Saint Lucia,False,Latin America & Caribbean,Caribbean
-STP,Sao Tome and Principe,False,Sub-Saharan Africa,Middle Africa
-SEN,Senegal,False,Sub-Saharan Africa,Western Africa
-SRB,Serbia,False,Europe & Central Asia,Southern Europe
-SYC,Seychelles,False,Sub-Saharan Africa,Eastern Africa
-SLE,Sierra Leone,False,Sub-Saharan Africa,Western Africa
-SGP,Singapore,False,East Asia & Pacific,South-Eastern Asia
-SXM,Sint Maarten (Dutch part),False,Latin America & Caribbean,Caribbean
-SOM,Somalia,False,Middle East & North Africa,Eastern Africa
-LKA,Sri Lanka,False,South Asia,South Asia
-ZAF,South Africa,False,Sub-Saharan Africa,Southern Africa
-SDN,Sudan,False,Sub-Saharan Africa,Northern Africa
-SSD,South Sudan,False,Sub-Saharan Africa,Eastern Africa
-SWE,Sweden,False,Europe & Central Asia,Northern Europe
-CHE,Switzerland,False,Europe & Central Asia,Western Europe
-SUR,Suriname,False,Latin America & Caribbean,South America
-THA,Thailand,False,East Asia & Pacific,South-Eastern Asia
-TZA,Tanzania,False,Sub-Saharan Africa,Eastern Africa
-TJK,Tajikistan,False,Europe & Central Asia,Western Asia
-TLS,Timor-Leste,False,East Asia & Pacific,South-Eastern Asia
-TGO,Togo,False,Sub-Saharan Africa,Western Africa
-TON,Tonga,False,East Asia & Pacific,Polynesia
-TTO,Trinidad and Tobago,False,Latin America & Caribbean,Caribbean
-TUN,Tunisia,False,Middle East & North Africa,Northern Africa
-TKM,Turkmenistan,False,Europe & Central Asia,Western Asia
-TUR,Türkiye,False,Europe & Central Asia,Western Asia
-TUV,Tuvalu,False,East Asia & Pacific,Polynesia
-UKR,Ukraine,False,Europe & Central Asia,Eastern Europe
-UGA,Uganda,False,Sub-Saharan Africa,Eastern Africa
-URY,Uruguay,False,Latin America & Caribbean,South America
-UZB,Uzbekistan,False,Europe & Central Asia,Western Asia
-VUT,Vanuatu,False,East Asia & Pacific,Melanesia
-VEN,Venezuela,False,Latin America & Caribbean,South America
-VNM,Vietnam,False,East Asia & Pacific,South-Eastern Asia
-YEM,Yemen,False,Middle East & North Africa,Western Asia
-ZMB,Zambia,False,Sub-Saharan Africa,Eastern Africa
-ZWE,Zimbabwe,False,Sub-Saharan Africa,Eastern Africa
-MIC,Middle income,False,Middle income countries (aggregate),World Bank
-SSF,Sub-Saharan Africa,False,Sub-Saharan Africa,World
-TSS,Sub-Saharan Africa (IBRD & IDA),False,Sub-Saharan Africa (IBRD & IDA),World
-SSA,Sub-Saharan Africa,False,Sub-Saharan Africa,World
-NAC,North America,False,North America,World
-LCN,Latin America & Caribbean,False,Latin America & Caribbean,World
-TLA,Latin America & Caribbean (IBRD & IDA),False,Latin America & Caribbean (IBRD & IDA),World
-LAC,Latin America & Caribbean (excluding high income),False,Latin America & Caribbean (excluding high income),World
-SAS,South Asia,False,South Asia,World
-TSA,South Asia (IBRD & IDA),False,South Asia (IBRD & IDA),World
-EAS,East Asia & Pacific,False,East Asia & Pacific,World
-TEA,East Asia & Pacific (IBRD & IDA),False,East Asia & Pacific (IBRD & IDA),World
-EAP,East Asia & Pacific,False,East Asia & Pacific,World
-LTE,Late-demographic dividend,False,Demographic dividend,World Bank
-IBT,IBRD & IDA,False,IBRD and IDA (World Bank),World Bank
-ARB,Arab World,False,Arab World,World
-PSS,Pacific Island Small States,False,Pacific Island Small States,World
-CSS,Caribbean Small States,False,Caribbean Small States,Caribbean
-CEB,Central Europe and the Baltics,False,Central Europe and the Baltics,Central Europe
-ECS,Europe & Central Asia (other),False,Europe & Central Asia,Europe & Central Asia
-TEC,Europe & Central Asia (IBRD & IDA),False,Europe & Central Asia (IBRD & IDA),Europe & Central Asia
-ECA,Europe & Central Asia,False,Europe & Central Asia,World
-FCS,Fragile and Conflict-Affected Situations,False,Fragile and Conflict-Affected Situations,World Bank
-HIC,High income,False,High income countries (aggregate),World
-UMC,Upper middle income,False,Upper middle income countries (aggregate),World
-LMY,Low & middle income,False,Low & middle income countries (aggregate),World Bank
-EAR,Early-demographic dividend,False,Demographic dividend,World Bank
-CHI,Channel Islands,False,Channel Islands,Western Europe
-XKX,Kosovo,False,Europe & Central Asia,Southern Europe
-IDB,IDA blend,False,IDA blend (World Bank),World Bank
-OED,OECD members,False,OECD members,OECD members
-WLD,World,False,World,World
-INX,Not classified,False,Not classified,Not classified
-MEA,Middle East & North Africa,False,Middle East & North Africa,Africa
-TMN,Middle East & North Africa (IBRD & IDA),False,Middle East & North Africa (IBRD & IDA),Africa
-MNA,Middle East & North Africa,False,Middle East & North Africa,World
-OSS,Other small states,False,Other Small States,World
-LIC,Low income,False,Low income countries (aggregate),World
-LMC,Lower middle income,False,Lower middle income countries (aggregate),World
-LDC,Least developed countries (UN),False,Least developed countries (UN classification),World Bank
-HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World Bank
-SST,Small states,False,Small States,World
-PST,Post-demographic dividend,False,Demographic dividend,World Bank
-PRE,Pre-demographic dividend,False,Demographic dividend,World Bank
-IDX,IDA only,False,IDA only (World Bank),World Bank
-IBD,IBRD only,False,IBRD only (World Bank),World Bank
-IDA,IDA total,False,IDA total (World Bank),World Bank
-EUU,European Union,False,European Union,European Union
-EMU,Euro area,False,Euro Area,European Union
-AFE,Sub-Saharan Africa (Eastern Africa),False,Sub-Saharan Africa,Eastern Africa
-AFW,Sub-Saharan Africa (Western & Central Africa),False,Sub-Saharan Africa,Western & Central Africa
-AFE,Sub-Saharan Africa (Eastern Africa),False,Sub-Saharan Africa,Eastern Africa
-AFW,Sub-Saharan Africa (Western & Central Africa),False,Sub-Saharan Africa,Western & Central Africa
-ARB,Arab World,False,Arab World,World
-CEB,Central Europe and the Baltics,False,Central Europe and the Baltics,Central Europe
-CHI,Channel Islands,False,Channel Islands,Western Europe
-CSS,Caribbean Small States,False,Caribbean Small States,Caribbean
-EAP,East Asia & Pacific,False,East Asia & Pacific,World
-EAR,Early-demographic dividend,False,Demographic dividend,World Bank
-EAS,East Asia & Pacific,False,East Asia & Pacific,World
-ECA,Europe & Central Asia,False,Europe & Central Asia,World
-ECS,Europe & Central Asia (other),False,Europe & Central Asia,Europe & Central Asia
-EMU,Euro area,False,Euro Area,European Union
-EUU,European Union,False,European Union,European Union
-FCS,Fragile and Conflict-Affected Situations,False,Fragile and Conflict-Affected Situations,World Bank
-HIC,High income,False,High income countries (aggregate),World
-HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World Bank
-IBD,IBRD only,False,IBRD only (World Bank),World Bank
-IBT,IBRD & IDA,False,IBRD and IDA (World Bank),World Bank
-IDA,IDA total,False,IDA total (World Bank),World Bank
-IDB,IDA blend,False,IDA blend (World Bank),World Bank
-IDX,IDA only,False,IDA only (World Bank),World Bank
-INX,Not classified,False,Not classified,Not classified
-LAC,Latin America & Caribbean (excluding high income),False,Latin America & Caribbean (excluding high income),World
-LCN,Latin America & Caribbean,False,Latin America & Caribbean,World
-LDC,Least developed countries (UN),False,Least developed countries (UN classification),World Bank
-LIC,Low income,False,Low income countries (aggregate),World
-LMC,Lower middle income,False,Lower middle income countries (aggregate),World
-LMY,Low & middle income,False,Low & middle income countries (aggregate),World Bank
-LTE,Late-demographic dividend,False,Demographic dividend,World Bank
-MEA,Middle East & North Africa,False,Middle East & North Africa,Africa
-MIC,Middle income,False,Middle income countries (aggregate),World Bank
-MNA,Middle East & North Africa,False,Middle East & North Africa,World
-NAC,North America,False,North America,World
-OED,OECD members,False,OECD members,OECD members
-OSS,Other small states,False,Other Small States,World
-PRE,Pre-demographic dividend,False,Demographic dividend,World Bank
-PSS,Pacific Island Small States,False,Pacific Island Small States,World
-PST,Post-demographic dividend,False,Demographic dividend,World Bank
-SAS,South Asia,False,South Asia,World
-SSA,Sub-Saharan Africa,False,Sub-Saharan Africa,World
-SSF,Sub-Saharan Africa,False,Sub-Saharan Africa,World
-SST,Small states,False,Small States,World
-TEA,East Asia & Pacific (IBRD & IDA),False,East Asia & Pacific (IBRD & IDA),World
-TEC,Europe & Central Asia (IBRD & IDA),False,Europe & Central Asia (IBRD & IDA),Europe & Central Asia
-TLA,Latin America & Caribbean (IBRD & IDA),False,Latin America & Caribbean (IBRD & IDA),World
-TMN,Middle East & North Africa (IBRD & IDA),False,Middle East & North Africa (IBRD & IDA),Africa
-TSA,South Asia (IBRD & IDA),False,South Asia (IBRD & IDA),World
-TSS,Sub-Saharan Africa (IBRD & IDA),False,Sub-Saharan Africa (IBRD & IDA),World
-UMC,Upper middle income,False,Upper middle income countries (aggregate),World
-WLD,World,False,World,World
-XKX,Kosovo,False,Europe & Central Asia,Southern Europe
+MIC,Middle income,True,Middle income countries (aggregate),World Bank
+SSF,Sub-Saharan Africa,True,Sub-Saharan Africa,World
+TSS,Sub-Saharan Africa (IBRD & IDA),True,Sub-Saharan Africa (IBRD & IDA),World
+SSA,Sub-Saharan Africa,True,Sub-Saharan Africa,World
+NAC,North America,True,North America,World
+LCN,Latin America & Caribbean,True,Latin America & Caribbean,World
+TLA,Latin America & Caribbean (IBRD & IDA),True,Latin America & Caribbean (IBRD & IDA),World
+LAC,Latin America & Caribbean (excluding high income),True,Latin America & Caribbean (excluding high income),World
+SAS,South Asia,True,South Asia,World
+TSA,South Asia (IBRD & IDA),True,South Asia (IBRD & IDA),World
+EAS,East Asia & Pacific,True,East Asia & Pacific,World
+TEA,East Asia & Pacific (IBRD & IDA),True,East Asia & Pacific (IBRD & IDA),World
+EAP,East Asia & Pacific,True,East Asia & Pacific,World
+LTE,Late-demographic dividend,True,Demographic dividend,World Bank
+IBT,IBRD & IDA,True,IBRD and IDA (World Bank),World Bank
+ARB,Arab World,True,Arab World,World
+PSS,Pacific Island Small States,True,Pacific Island Small States,World
+CSS,Caribbean Small States,True,Caribbean Small States,Caribbean
+CEB,Central Europe and the Baltics,True,Central Europe and the Baltics,Central Europe
+ECS,Europe & Central Asia (other),True,Europe & Central Asia,Europe & Central Asia
+TEC,Europe & Central Asia (IBRD & IDA),True,Europe & Central Asia (IBRD & IDA),Europe & Central Asia
+ECA,Europe & Central Asia,True,Europe & Central Asia,World
+FCS,Fragile and Conflict-Affected Situations,True,Fragile and Conflict-Affected Situations,World Bank
+HIC,High income,True,High income countries (aggregate),World
+UMC,Upper middle income,True,Upper middle income countries (aggregate),World
+LMY,Low & middle income,True,Low & middle income countries (aggregate),World Bank
+EAR,Early-demographic dividend,True,Demographic dividend,World Bank
+CHI,Channel Islands,True,Channel Islands,Western Europe
+XKX,Kosovo,True,Europe & Central Asia,Southern Europe
+IDB,IDA blend,True,IDA blend (World Bank),World Bank
+OED,OECD members,True,OECD members,OECD members
+WLD,World,True,World,World
+INX,Not classified,True,Not classified,Not classified
+MEA,Middle East & North Africa,True,Middle East & North Africa,Africa
+TMN,Middle East & North Africa (IBRD & IDA),True,Middle East & North Africa (IBRD & IDA),Africa
+MNA,Middle East & North Africa,True,Middle East & North Africa,World
+OSS,Other small states,True,Other Small States,World
+LIC,Low income,True,Low income countries (aggregate),World
+LMC,Lower middle income,True,Lower middle income countries (aggregate),World
+LDC,Least developed countries (UN),True,Least developed countries (UN classification),World Bank
+HPC,Heavily indebted poor countries (HIPC),True,Heavily indebted poor countries (HIPC),World Bank
+SST,Small states,True,Small States,World
+PST,Post-demographic dividend,True,Demographic dividend,World Bank
+PRE,Pre-demographic dividend,True,Demographic dividend,World Bank
+IDX,IDA only,True,IDA only (World Bank),World Bank
+IBD,IBRD only,True,IBRD only (World Bank),World Bank
+IDA,IDA total,True,IDA total (World Bank),World Bank
+EUU,European Union,True,European Union,European Union
+EMU,Euro area,True,Euro Area,European Union
+AFE,Sub-Saharan Africa (Eastern Africa),True,Sub-Saharan Africa,Eastern Africa
+AFW,Sub-Saharan Africa (Western & Central Africa),True,Sub-Saharan Africa,Western & Central Africa

@@ -17,21 +17,20 @@
 
 ## Objetivo General
 
-Realizar un análisis descriptivo de un conjunto limitado de indicadores económicos del Banco Mundial (PIB, exportaciones, importaciones e inflación), seleccionando únicamente un subconjunto representativo de países entre 1960 y 2023, con el fin de identificar tendencias generales y relaciones básicas sin pretender abarcar la totalidad de los datos globales disponibles.
-
+Realizar un análisis descriptivo de indicadores económicos del Banco Mundial (PIB, comercio e inflación) para América Latina y el Caribe (ALC) entre 1960 y 2023, con el propósito de identificar y contrastar sus tendencias macroeconómicas frente a los patrones observados en agregados económicos globales y mundiales. 
 ---
 
 ## Objetivos Específicos
 
-* Seleccionar y preparar un subconjunto acotado de países y años para asegurar que el análisis se mantenga dentro de un alcance manejable.
+*	Seleccionar y preparar un subconjunto acotado de países y años (ALC) para asegurar que el análisis se mantenga dentro de un alcance manejable.
 
-* Integrar y depurar los indicadores seleccionados mediante un proceso ETL que garantice coherencia temporal, estandarización y ausencia de duplicados.
+*	Integrar y depurar los indicadores seleccionados mediante un proceso ETL que garantice coherencia temporal, estandarización y ausencia de duplicados.
 
-* Describir las tendencias básicas del PIB, comercio exterior e inflación únicamente dentro de un subconjunto seleccionado, sin realizar comparaciones globales completas.
+*	Describir las tendencias básicas del PIB, comercio exterior e inflación del subconjunto (ALC), contrastándolas con las tendencias de los principales agregados económicos globales.
 
-* Explorar relaciones simples entre comercio exterior (exportaciones/importaciones) y PIB a través de visualizaciones descriptivas, sin modelamiento estadístico avanzado.
+*	Explorar relaciones simples entre comercio exterior (exportaciones/importaciones) y PIB a través de visualizaciones descriptivas, sin modelamiento estadístico avanzado.
 
-* Presentar visualizaciones sintéticas que permitan interpretar patrones generales sin pretender caracterizar el comportamiento económico mundial en su totalidad.
+*	Presentar visualizaciones sintéticas que permitan interpretar patrones generales y el posicionamiento de ALC en el escenario económico mundial.
 
 ---
 

@@ -17,21 +17,27 @@
 
 ## Objetivo General
 
-Realizar un análisis descriptivo de un conjunto limitado de indicadores económicos del Banco Mundial (PIB, exportaciones, importaciones e inflación), seleccionando únicamente un subconjunto representativo de países entre 1960 y 2023, con el fin de identificar tendencias generales y relaciones básicas sin pretender abarcar la totalidad de los datos globales disponibles.
+Realizar un análisis descriptivo de indicadores económicos del Banco Mundial (PIB, comercio e inflación) para América Latina y el Caribe (ALC) entre 1960 y 2023, con el propósito de identificar y contrastar sus tendencias macroeconómicas frente a los patrones observados en agregados económicos globales y mundiales. 
 
 ---
 
 ## Objetivos Específicos
 
-* Seleccionar y preparar un subconjunto acotado de países y años para asegurar que el análisis se mantenga dentro de un alcance manejable.
+*	Seleccionar y preparar un subconjunto acotado de países y años (ALC) para asegurar que el análisis se mantenga dentro de un alcance manejable.
 
-* Integrar y depurar los indicadores seleccionados mediante un proceso ETL que garantice coherencia temporal, estandarización y ausencia de duplicados.
+*	Integrar y depurar los indicadores seleccionados mediante un proceso ETL que garantice coherencia temporal, estandarización y ausencia de duplicados.
 
-* Describir las tendencias básicas del PIB, comercio exterior e inflación únicamente dentro de un subconjunto seleccionado, sin realizar comparaciones globales completas.
+*	Describir las tendencias básicas del PIB, comercio exterior e inflación del subconjunto (ALC), contrastándolas con las tendencias de los principales agregados económicos globales.
 
-* Explorar relaciones simples entre comercio exterior (exportaciones/importaciones) y PIB a través de visualizaciones descriptivas, sin modelamiento estadístico avanzado.
+*	Explorar relaciones simples entre comercio exterior (exportaciones/importaciones) y PIB a través de visualizaciones descriptivas, sin modelamiento estadístico avanzado.
 
-* Presentar visualizaciones sintéticas que permitan interpretar patrones generales sin pretender caracterizar el comportamiento económico mundial en su totalidad.
+*	Presentar visualizaciones sintéticas que permitan interpretar patrones generales y el posicionamiento de ALC en el escenario económico mundial.
+
+---
+
+## Metodologia agil de trabajo
+
+El proyecto se desarrollará bajo la Metodología Scrum, una estructura de trabajo ágil que prioriza la entrega continua de valor y la adaptabilidad a los requerimientos. La planificación del trabajo se organizará en iteraciones (Sprints) con una duración de dos semanas cada una, al final de las cuales se realizará una entrega parcial con funcionalidades completas y evaluables. Solamente el primer periodo se extenderá a tres semanas, ya que esta fase inicial estará dedicada a la planeación del proyecto, incluyendo la selección de datos, el diseño de la arquitectura ETL, y la formulación detallada de los objetivos y el alcance final del análisis.
 
 ---
 
@@ -351,6 +357,9 @@ Finalmente, el script crea una base SQLite:
 2. Carga las tablas CSV a SQLite:
 
    ```python
+   dim_indicator = pd.read_csv(os.path.join(CLEAN_DIR, "dim_indicator.csv"))
+   fact_indicators = pd.read_csv(os.path.join(CLEAN_DIR, "fact_indicators.csv"))
+   fact_wide = pd.read_csv(os.path.join(CLEAN_DIR, "fact_wide.csv"))
    dim_geo.to_sql("dim_geo", conn, if_exists="replace", index=False)
    dim_indicator.to_sql("dim_indicator", conn, if_exists="replace", index=False)
    fact_indicators.to_sql("fact_indicators", conn, if_exists="replace", index=False)
@@ -362,7 +371,7 @@ Finalmente, el script crea una base SQLite:
    ```sql
    CREATE VIEW IF NOT EXISTS vw_wide_geo AS
    SELECT
-     w.country_code, g.country_name, g.region, g.sub_region, g.income_group,
+     w.country_code, g.country_name, g.region, g.sub_region,
      w.year,
      w.exports_percent_gdp,
      w.imports_percent_gdp,
