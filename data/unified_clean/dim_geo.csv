@@ -429,7 +429,7 @@ VNM,Vietnam,False,East Asia & Pacific,South-Eastern Asia
 YEM,Yemen,False,Middle East & North Africa,Western Asia
 ZMB,Zambia,False,Sub-Saharan Africa,Eastern Africa
 ZWE,Zimbabwe,False,Sub-Saharan Africa,Eastern Africa
-MIC,Middle income,False,Middle income countries (aggregate),World
+MIC,Middle income,False,Middle income countries (aggregate),World Bank
 SSF,Sub-Saharan Africa,False,Sub-Saharan Africa,World
 TSS,Sub-Saharan Africa (IBRD & IDA),False,Sub-Saharan Africa (IBRD & IDA),World
 SSA,Sub-Saharan Africa,False,Sub-Saharan Africa,World
@@ -442,7 +442,7 @@ TSA,South Asia (IBRD & IDA),False,South Asia (IBRD & IDA),World
 EAS,East Asia & Pacific,False,East Asia & Pacific,World
 TEA,East Asia & Pacific (IBRD & IDA),False,East Asia & Pacific (IBRD & IDA),World
 EAP,East Asia & Pacific,False,East Asia & Pacific,World
-LTE,Late-demographic dividend,False,World,World Bank
+LTE,Late-demographic dividend,False,Demographic dividend,World Bank
 IBT,IBRD & IDA,False,IBRD and IDA (World Bank),World Bank
 ARB,Arab World,False,Arab World,World
 PSS,Pacific Island Small States,False,Pacific Island Small States,World
@@ -451,11 +451,11 @@ CEB,Central Europe and the Baltics,False,Central Europe and the Baltics,Central 
 ECS,Europe & Central Asia (other),False,Europe & Central Asia,Europe & Central Asia
 TEC,Europe & Central Asia (IBRD & IDA),False,Europe & Central Asia (IBRD & IDA),Europe & Central Asia
 ECA,Europe & Central Asia,False,Europe & Central Asia,World
-FCS,Fragile and Conflict-Affected Situations,False,World,World
+FCS,Fragile and Conflict-Affected Situations,False,Fragile and Conflict-Affected Situations,World Bank
 HIC,High income,False,High income countries (aggregate),World
 UMC,Upper middle income,False,Upper middle income countries (aggregate),World
-LMY,Low & middle income,False,Low & middle income countries (aggregate),World
-EAR,Early-demographic dividend,False,World,World Bank
+LMY,Low & middle income,False,Low & middle income countries (aggregate),World Bank
+EAR,Early-demographic dividend,False,Demographic dividend,World Bank
 CHI,Channel Islands,False,Channel Islands,Western Europe
 XKX,Kosovo,False,Europe & Central Asia,Southern Europe
 IDB,IDA blend,False,IDA blend (World Bank),World Bank
@@ -468,11 +468,11 @@ MNA,Middle East & North Africa,False,Middle East & North Africa,World
 OSS,Other small states,False,Other Small States,World
 LIC,Low income,False,Low income countries (aggregate),World
 LMC,Lower middle income,False,Lower middle income countries (aggregate),World
-LDC,Least developed countries (UN),False,Least developed countries (UN classification),World
-HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World
+LDC,Least developed countries (UN),False,Least developed countries (UN classification),World Bank
+HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World Bank
 SST,Small states,False,Small States,World
-PST,Post-demographic dividend,False,World,World Bank
-PRE,Pre-demographic dividend,False,World,World Bank
+PST,Post-demographic dividend,False,Demographic dividend,World Bank
+PRE,Pre-demographic dividend,False,Demographic dividend,World Bank
 IDX,IDA only,False,IDA only (World Bank),World Bank
 IBD,IBRD only,False,IBRD only (World Bank),World Bank
 IDA,IDA total,False,IDA total (World Bank),World Bank
@@ -487,15 +487,15 @@ CEB,Central Europe and the Baltics,False,Central Europe and the Baltics,Central 
 CHI,Channel Islands,False,Channel Islands,Western Europe
 CSS,Caribbean Small States,False,Caribbean Small States,Caribbean
 EAP,East Asia & Pacific,False,East Asia & Pacific,World
-EAR,Early-demographic dividend,False,World,World Bank
+EAR,Early-demographic dividend,False,Demographic dividend,World Bank
 EAS,East Asia & Pacific,False,East Asia & Pacific,World
 ECA,Europe & Central Asia,False,Europe & Central Asia,World
 ECS,Europe & Central Asia (other),False,Europe & Central Asia,Europe & Central Asia
 EMU,Euro area,False,Euro Area,European Union
 EUU,European Union,False,European Union,European Union
-FCS,Fragile and Conflict-Affected Situations,False,World,World
+FCS,Fragile and Conflict-Affected Situations,False,Fragile and Conflict-Affected Situations,World Bank
 HIC,High income,False,High income countries (aggregate),World
-HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World
+HPC,Heavily indebted poor countries (HIPC),False,Heavily indebted poor countries (HIPC),World Bank
 IBD,IBRD only,False,IBRD only (World Bank),World Bank
 IBT,IBRD & IDA,False,IBRD and IDA (World Bank),World Bank
 IDA,IDA total,False,IDA total (World Bank),World Bank
@@ -504,20 +504,20 @@ IDX,IDA only,False,IDA only (World Bank),World Bank
 INX,Not classified,False,Not classified,Not classified
 LAC,Latin America & Caribbean (excluding high income),False,Latin America & Caribbean (excluding high income),World
 LCN,Latin America & Caribbean,False,Latin America & Caribbean,World
-LDC,Least developed countries (UN),False,Least developed countries (UN classification),World
+LDC,Least developed countries (UN),False,Least developed countries (UN classification),World Bank
 LIC,Low income,False,Low income countries (aggregate),World
 LMC,Lower middle income,False,Lower middle income countries (aggregate),World
-LMY,Low & middle income,False,Low & middle income countries (aggregate),World
-LTE,Late-demographic dividend,False,World,World Bank
+LMY,Low & middle income,False,Low & middle income countries (aggregate),World Bank
+LTE,Late-demographic dividend,False,Demographic dividend,World Bank
 MEA,Middle East & North Africa,False,Middle East & North Africa,Africa
-MIC,Middle income,False,Middle income countries (aggregate),World
+MIC,Middle income,False,Middle income countries (aggregate),World Bank
 MNA,Middle East & North Africa,False,Middle East & North Africa,World
 NAC,North America,False,North America,World
 OED,OECD members,False,OECD members,OECD members
 OSS,Other small states,False,Other Small States,World
-PRE,Pre-demographic dividend,False,World,World Bank
+PRE,Pre-demographic dividend,False,Demographic dividend,World Bank
 PSS,Pacific Island Small States,False,Pacific Island Small States,World
-PST,Post-demographic dividend,False,World,World Bank
+PST,Post-demographic dividend,False,Demographic dividend,World Bank
 SAS,South Asia,False,South Asia,World
 SSA,Sub-Saharan Africa,False,Sub-Saharan Africa,World
 SSF,Sub-Saharan Africa,False,Sub-Saharan Africa,World
