@@ -266,10 +266,10 @@ LAC,Latin America & Caribbean (excluding high income),Latin America & Caribbean 
 TSA,South Asia (IBRD & IDA),South Asia (IBRD & IDA),World,TRUE
 EAS,East Asia & Pacific,East Asia & Pacific,World,TRUE
 TEA,East Asia & Pacific (IBRD & IDA),East Asia & Pacific (IBRD & IDA),World,TRUE
-LTE,Late-demographic dividend,World,World Bank,FALSE
-EAR,Early-demographic dividend,World,World Bank,FALSE
-PST,Post-demographic dividend,World,World Bank,FALSE
-PRE,Pre-demographic dividend,World,World Bank,FALSE
+LTE,Late-demographic dividend,Demographic dividend,World Bank,FALSE
+EAR,Early-demographic dividend,Demographic dividend,World Bank,FALSE
+PST,Post-demographic dividend,Demographic dividend,World Bank,FALSE
+PRE,Pre-demographic dividend,Demographic dividend,World Bank,FALSE
 IBT,IBRD & IDA,IBRD and IDA (World Bank),World Bank,TRUE
 IBD,IBRD only,IBRD only (World Bank),World Bank,TRUE
 IDX,IDA only,IDA only (World Bank),World Bank,TRUE
@@ -281,11 +281,11 @@ CSS,Caribbean Small States,Caribbean Small States,Caribbean,TRUE
 CEB,Central Europe and the Baltics,Central Europe and the Baltics,Central Europe,TRUE
 ECS,Europe & Central Asia (other),Europe & Central Asia,Europe & Central Asia,TRUE
 TEC,Europe & Central Asia (IBRD & IDA),Europe & Central Asia (IBRD & IDA),Europe & Central Asia,TRUE
-FCS,Fragile and Conflict-Affected Situations,World,World,FALSE
-MIC,Middle income,Middle income countries (aggregate),World,TRUE
-LMY,Low & middle income,Low & middle income countries (aggregate),World,TRUE
-LDC,Least developed countries (UN),Least developed countries (UN classification),World,TRUE
-HPC,Heavily indebted poor countries (HIPC),Heavily indebted poor countries (HIPC),World,TRUE
+FCS,Fragile and Conflict-Affected Situations,Fragile and Conflict-Affected Situations,World Bank,FALSE
+MIC,Middle income,Middle income countries (aggregate),World Bank,TRUE
+LMY,Low & middle income,Low & middle income countries (aggregate),World Bank,TRUE
+LDC,Least developed countries (UN),Least developed countries (UN classification),World Bank,TRUE
+HPC,Heavily indebted poor countries (HIPC),Heavily indebted poor countries (HIPC),World Bank,TRUE
 SST,Small states,Small States,World,TRUE
 OSS,Other small states,Other Small States,World,TRUE
 OED,OECD members,OECD members,OECD members,FALSE
