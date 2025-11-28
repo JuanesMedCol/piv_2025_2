@@ -125,60 +125,152 @@ df_main, df_outliers_inflation, df_outliers_gdp = get_data_from_db()
 
 # --- FUNCIÓN DE ANÁLISIS INTELIGENTE ---
 def generate_metric_analysis(df, latest_year):
-    """Genera un análisis de texto basado en las métricas filtradas."""
+    """Genera un análisis de texto basado en las métricas filtradas, incluyendo mejor, peor y situación general."""
     
     analysis_points = []
     
-    # Filtrar solo el último año (excluyendo a Venezuela RB para promedios)
-    df_latest_valid = df[(df['year'] == latest_year) & (df['country_name'] != 'Venezuela, RB')].dropna(subset=['crecimiento_anual', 'inflacion', 'balanza_comercial_neta'])
+    # Filtrar solo el último año (excluyendo a Venezuela RB para promedios, ya que distorsiona las medias)
+    df_latest_valid = df[(df['year'] == latest_year) & (df['country_name'] != 'Venezuela, RB')].dropna(subset=['crecimiento_anual', 'inflacion', 'balanza_comercial_neta', 'exportaciones_percent', 'importaciones_percent'])
     
     if df_latest_valid.empty:
         return ["No hay datos suficientes para generar un análisis inteligente para este periodo."]
     
-    # 1. ANÁLISIS DE CRECIMIENTO (CRECIMIENTO ANUAL)
+    # --- ANÁLISIS DE CRECIMIENTO (CRECIMIENTO ANUAL) ---
     avg_growth = df_latest_valid['crecimiento_anual'].mean()
     
     if not pd.isna(avg_growth):
+        country_best_growth = df_latest_valid.loc[df_latest_valid['crecimiento_anual'].nlargest(1).index, 'country_name'].iloc[0] if not df_latest_valid['crecimiento_anual'].empty else 'N/A'
+        country_worst_growth = df_latest_valid.loc[df_latest_valid['crecimiento_anual'].nsmallest(1).index, 'country_name'].iloc[0] if not df_latest_valid['crecimiento_anual'].empty else 'N/A'
+        
+        # 1. Situación General (Resumen Regional/Selección)
         if avg_growth > 3.0:
-            analysis_points.append(f"📈 **Crecimiento Fuerte:** La región/selección muestra un sólido crecimiento promedio del PIB del **{avg_growth:.1f}%** en {latest_year}.")
+            analysis_points.append(f"📈 **Crecimiento General Sólido ({latest_year}):** La selección muestra un sólido crecimiento promedio del PIB del **{avg_growth:.1f}%**.")
         elif avg_growth > 0.5:
-            analysis_points.append(f"📉 **Crecimiento Moderado:** El crecimiento promedio del PIB es moderado, situándose en **{avg_growth:.1f}%** en {latest_year}, indicando una expansión lenta.")
+            analysis_points.append(f"📉 **Crecimiento General Moderado ({latest_year}):** El crecimiento promedio del PIB es moderado, situándose en **{avg_growth:.1f}%**, indicando una expansión lenta.")
         elif avg_growth > 0:
-            analysis_points.append(f"🔻 **Crecimiento Débil:** El crecimiento promedio del PIB es marginal (**{avg_growth:.1f}%**), lo que sugiere una recuperación muy frágil o estancamiento.")
+            analysis_points.append(f"🔻 **Crecimiento General Débil ({latest_year}):** El crecimiento promedio del PIB es marginal (**{avg_growth:.1f}%**), lo que sugiere una recuperación frágil.")
         else:
-            analysis_points.append(f"🚨 **Contracción:** El PIB promedio se ha **contraído** en **{avg_growth:.1f}%** en {latest_year}, indicando recesión en gran parte de la selección.")
+            analysis_points.append(f"🚨 **Contracción General ({latest_year}):** El PIB promedio se ha **contraído** en **{avg_growth:.1f}%**, indicando recesión en gran parte de la selección.")
+        
+        # 2. Rendimiento Individual (Mejor/Peor)
+        analysis_points.append(f"🏆 **Mejor Crecimiento ({latest_year}):** El país con mejor rendimiento fue **{country_best_growth}** con un crecimiento de **{df_latest_valid['crecimiento_anual'].max():.1f}%** del PIB.")
+        analysis_points.append(f"⚠️ **Peor Crecimiento ({latest_year}):** El país con menor o peor crecimiento fue **{country_worst_growth}** con **{df_latest_valid['crecimiento_anual'].min():.1f}%** del PIB.")
 
-    # 2. ANÁLISIS DE INFLACIÓN (INFLACION)
+
+    # --- ANÁLISIS DE INFLACIÓN (INFLACION) ---
     avg_inflation = df_latest_valid['inflacion'].mean()
     
     if not pd.isna(avg_inflation):
         country_high_inf = df_latest_valid.loc[df_latest_valid['inflacion'].nlargest(1).index, 'country_name'].iloc[0] if not df_latest_valid['inflacion'].empty else 'N/A'
+        country_low_inf = df_latest_valid.loc[df_latest_valid['inflacion'].nsmallest(1).index, 'country_name'].iloc[0] if not df_latest_valid['inflacion'].empty else 'N/A'
         
+        # 1. Situación General
         if avg_inflation > 15:
-            analysis_points.append(f"🔥 **Alta Inflación Regional:** El promedio de inflación es muy alto (**{avg_inflation:.1f}%**). El país con la mayor inflación es **{country_high_inf}**.")
+            analysis_points.append(f"🔥 **Inflación General Muy Alta ({latest_year}):** El promedio de inflación en la selección es muy elevado (**{avg_inflation:.1f}%**).")
         elif avg_inflation > 5:
-            analysis_points.append(f"⚠️ **Inflación Elevada:** La inflación promedio (**{avg_inflation:.1f}%**) supera el rango meta de la mayoría de los bancos centrales (3-5%), lo cual es un riesgo económico.")
+            analysis_points.append(f"⚠️ **Inflación General Elevada ({latest_year}):** La inflación promedio (**{avg_inflation:.1f}%**) supera los rangos meta de estabilidad de precios.")
         else:
-            analysis_points.append(f"✅ **Inflación Controlada:** La inflación promedio se mantiene en niveles manejables (**{avg_inflation:.1f}%**), en línea con los objetivos de estabilidad de precios.")
+            analysis_points.append(f"✅ **Inflación General Controlada ({latest_year}):** La inflación promedio se mantiene en niveles manejables (**{avg_inflation:.1f}%**).")
+            
+        # 2. Rendimiento Individual (Mejor/Peor)
+        analysis_points.append(f"📈 **País con Mayor Inflación ({latest_year}):** La mayor tasa se registró en **{country_high_inf}** con **{df_latest_valid['inflacion'].max():.1f}%**.")
+        analysis_points.append(f"📉 **País con Menor Inflación ({latest_year}):** El país con la menor inflación fue **{country_low_inf}** con **{df_latest_valid['inflacion'].min():.1f}%**.")
 
-    # 3. ANÁLISIS DE COMERCIO (BALANZA COMERCIAL NETA)
+    # --- ANÁLISIS DE COMERCIO (BALANZA COMERCIAL NETA) ---
     avg_trade_balance = df_latest_valid['balanza_comercial_neta'].mean()
     
     if not pd.isna(avg_trade_balance):
+        country_best_trade = df_latest_valid.loc[df_latest_valid['balanza_comercial_neta'].nlargest(1).index, 'country_name'].iloc[0] if not df_latest_valid['balanza_comercial_neta'].empty else 'N/A'
+        country_worst_trade = df_latest_valid.loc[df_latest_valid['balanza_comercial_neta'].nsmallest(1).index, 'country_name'].iloc[0] if not df_latest_valid['balanza_comercial_neta'].empty else 'N/A'
+        
+        # 1. Situación General
         if avg_trade_balance > 0.5:
-            analysis_points.append(f"💰 **Superávit Comercial:** La Balanza Comercial Neta promedio es positiva (**+{avg_trade_balance:.1f}% del PIB**), indicando que la región es exportadora neta.")
+            analysis_points.append(f"💰 **Balanza Comercial: Superávit ({latest_year}):** La Balanza Comercial Neta promedio es positiva (**+{avg_trade_balance:.1f}% del PIB**), indicando que la selección es exportadora neta.")
         elif avg_trade_balance < -0.5:
-            analysis_points.append(f"🚢 **Déficit Comercial:** La Balanza Comercial Neta promedio es negativa (**{avg_trade_balance:.1f}% del PIB**), lo que implica una mayor dependencia de las importaciones.")
+            analysis_points.append(f"🚢 **Balanza Comercial: Déficit ({latest_year}):** La Balanza Comercial Neta promedio es negativa (**{avg_trade_balance:.1f}% del PIB**), lo que implica una mayor dependencia de las importaciones.")
         else:
-            analysis_points.append(f"⚖️ **Balanza Neutral:** La Balanza Comercial Neta es cercana a cero, sugiriendo un equilibrio entre importaciones y exportaciones.")
+            analysis_points.append(f"⚖️ **Balanza Comercial: Neutral ({latest_year}):** La Balanza Comercial Neta es cercana a cero, sugiriendo un equilibrio.")
             
-    # Añadir un punto sobre outliers
-    outlier_pib = df_latest.loc[df_latest['pib_millones'].nlargest(1).index, 'country_name'].iloc[0] if not df_latest.empty and 'pib_millones' in df_latest.columns else 'N/A'
-    if outlier_pib not in ['N/A', 'Venezuela, RB', 'Guyana']:
-         analysis_points.append(f"⭐ **Líder de PIB:** El país con el PIB total más grande en {latest_year} (dentro de ALC) es **{outlier_pib}**.")
+        # 2. Rendimiento Individual (Mejor/Peor)
+        analysis_points.append(f"🥇 **Mayor Superávit/Menor Déficit ({latest_year}):** **{country_best_trade}** muestra la mejor balanza comercial con **{df_latest_valid['balanza_comercial_neta'].max():.1f}%** del PIB.")
+        analysis_points.append(f"🛑 **Mayor Déficit/Menor Superávit ({latest_year}):** **{country_worst_trade}** muestra la balanza comercial más débil con **{df_latest_valid['balanza_comercial_neta'].min():.1f}%** del PIB.")
+
+    # --- ANÁLISIS DE PIB TOTAL (LÍDER DE LA SELECCIÓN) ---
+    # Usar df_latest_valid para PIB total dentro de la selección
+    df_latest_pib = df_latest_valid.copy().dropna(subset=['pib_millones'])
+
+    if not df_latest_pib.empty:
+        outlier_pib = df_latest_pib.loc[df_latest_pib['pib_millones'].nlargest(1).index, 'country_name'].iloc[0]
+        pib_value = df_latest_pib['pib_millones'].max()
+        
+        analysis_points.append(f"⭐ **Líder de PIB de la Selección ({latest_year}):** El país con el **PIB Total** más grande dentro de los seleccionados es **{outlier_pib}** con un valor de **{pib_value:,.0f} millones USD**.")
 
     return analysis_points
 
+# --- NUEVA FUNCIÓN: ANÁLISIS DE TENDENCIAS HISTÓRICAS (AÑADIR) ---
+def generate_trend_analysis(df, start_year, latest_year):
+    """
+    Genera un análisis de texto comparando las métricas promedio entre el año inicial 
+    y el año final del rango seleccionado.
+    """
+    
+    analysis_points = []
+    
+    # 1. Preparar datos para los dos años (excluyendo Venezuela RB para promedios)
+    df_start = df[(df['year'] == start_year) & (df['country_name'] != 'Venezuela, RB')].dropna(subset=['crecimiento_anual', 'inflacion', 'balanza_comercial_neta'])
+    df_latest = df[(df['year'] == latest_year) & (df['country_name'] != 'Venezuela, RB')].dropna(subset=['crecimiento_anual', 'inflacion', 'balanza_comercial_neta'])
+
+    if df_start.empty or df_latest.empty:
+        return [f"No hay suficientes datos disponibles para los años {start_year} y {latest_year} para realizar un análisis de tendencias."]
+
+    # 2. CALCULAR CAMBIOS PROMEDIO
+    avg_growth_start = df_start['crecimiento_anual'].mean()
+    avg_growth_latest = df_latest['crecimiento_anual'].mean()
+    change_growth = avg_growth_latest - avg_growth_start
+    
+    avg_inf_start = df_start['inflacion'].mean()
+    avg_inf_latest = df_latest['inflacion'].mean()
+    change_inf = avg_inf_latest - avg_inf_start
+    
+    avg_trade_start = df_start['balanza_comercial_neta'].mean()
+    avg_trade_latest = df_latest['balanza_comercial_neta'].mean()
+    change_trade = avg_trade_latest - avg_trade_start
+    
+    
+    # 3. GENERAR PUNTOS DE ANÁLISIS
+    analysis_points.append(f"Este análisis compara el rendimiento promedio de la selección de países entre el inicio del rango de años ({start_year}) y el año más reciente ({latest_year}).")
+    
+    
+    # --- ANÁLISIS DE CRECIMIENTO ---
+    if not pd.isna(change_growth):
+        if change_growth > 0.5:
+            analysis_points.append(f"📈 **Crecimiento del PIB:** La región mejoró significativamente, con un aumento de **+{change_growth:.1f} puntos porcentuales (p.p.)** en el crecimiento promedio ({avg_growth_start:.1f}% -> {avg_growth_latest:.1f}%).")
+        elif change_growth < -0.5:
+            analysis_points.append(f"📉 **Crecimiento del PIB:** La tendencia de crecimiento se deterioró, cayendo en **{change_growth:.1f} p.p.**, indicando una desaceleración económica regional.")
+        else:
+            analysis_points.append(f"⚖️ **Crecimiento del PIB:** El crecimiento promedio se mantuvo estable, con un cambio marginal de **{change_growth:.1f} p.p.**.")
+
+    
+    # --- ANÁLISIS DE INFLACIÓN ---
+    if not pd.isna(change_inf):
+        if change_inf < -2.0:
+            analysis_points.append(f"✅ **Tasa de Inflación:** Se observa una fuerte contención de precios, con una caída de la inflación promedio de **{abs(change_inf):.1f} p.p.**, señalando un éxito en la estabilidad macroeconómica.")
+        elif change_inf > 2.0:
+            analysis_points.append(f"🔥 **Tasa de Inflación:** La presión inflacionaria aumentó, con un incremento promedio de **+{change_inf:.1f} p.p.**, lo que representa un desafío para el control de precios.")
+        else:
+            analysis_points.append(f"⚖️ **Tasa de Inflación:** La inflación se mantuvo en niveles similares, con un cambio poco significativo de **{change_inf:.1f} p.p.**.")
+
+    
+    # --- ANÁLISIS DE BALANZA COMERCIAL NETA ---
+    if not pd.isna(change_trade):
+        if change_trade > 0.5:
+            analysis_points.append(f"💰 **Balanza Comercial Neta:** La balanza mejoró en **+{change_trade:.1f} p.p. del PIB**, sugiriendo un aumento de las exportaciones netas.")
+        elif change_trade < -0.5:
+            analysis_points.append(f"🚢 **Balanza Comercial Neta:** La balanza se deterioró en **{change_trade:.1f} p.p. del PIB**, lo que podría indicar un aumento del déficit comercial promedio.")
+        else:
+            analysis_points.append(f"⚖️ **Balanza Comercial Neta:** Se mantuvo estable, con un cambio marginal de **{change_trade:.1f} p.p. del PIB**.")
+
+    return analysis_points
 
 # --- Título y Descripción ---
 st.title("🌎 Dashboard Económico de América Latina y el Caribe (ALC)")
@@ -220,7 +312,7 @@ else:
     year_range = st.sidebar.slider("Rango de Años para Gráficos:", min_value=min_year, max_value=max_year, value=(2010, max_year))
 
     available_countries = sorted(df_main['country_name'].unique().tolist())
-    default_countries = ['Colombia', 'Panama', 'Brazil', 'Chile', 'Mexico', 'Argentina']
+    default_countries = ['Colombia', 'Panama', 'Ecuador', 'Chile', 'Mexico', 'Uruguay']
     default_countries = [c for c in default_countries if c in available_countries]
 
     selected_countries = st.sidebar.multiselect("Selecciona Países para el Gráfico de Líneas:", available_countries, default=default_countries)
@@ -239,7 +331,7 @@ else:
     max_inflation_limit = st.sidebar.slider("Límite Superior del Heatmap de Inflación (%)", min_value=10.0, max_value=100.0, value=30.0, step=5.0)
 
     # --- Definición de Pestañas ---
-    tab1, tab2, tab3, tab4 = st.tabs(["📊 Resumen y Tendencias", "🔥 Análisis de Inflación", "📈 Anomalías del PIB", "🗺️ Vista Global"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📊 Metricas", "📈 Analisis", "🔥 Historico Inflación", "🗺️ Vista Global"])
 
     # --- Lógica de cálculo de métricas ---
     df_filtered = df_main[
@@ -262,24 +354,7 @@ else:
 
     # --- Pestaña 1: Resumen y Tendencias ---
     with tab1:
-        st.header("Análisis de Indicadores Clave")
-
-        # --- SECCIÓN DE ANÁLISIS INTELIGENTE ---
-        st.subheader("💡 Resumen Inteligente")
-        
-        # Filtramos df_filtered solo para los países seleccionados para un análisis relevante
-        df_analysis = df_filtered[df_filtered['country_name'].isin(selected_countries)] if selected_countries else df_filtered
-
-        if df_analysis.empty:
-            st.info("Selecciona países para generar un análisis inteligente.")
-        else:
-            analysis_results = generate_metric_analysis(df_analysis, latest_year)
-            
-            # Mostrar los resultados del análisis
-            for point in analysis_results:
-                st.markdown(f"- {point}")
-
-        st.markdown("---")
+        st.header("Metricas")
         
         col_kpi, col_spacer, col_desc = st.columns([1, 0.1, 2])
 
@@ -413,8 +488,43 @@ else:
                 st.plotly_chart(fig_box, use_container_width=True)
 
 
-    # --- Pestaña 2: Análisis de Inflación ---
+# --- Pestaña 2: Informe Inteligente ---
     with tab2:
+        st.header("Análisis Económico Inteligente de la Selección")
+        st.info("Este informe combina un análisis detallado del año más reciente con un estudio de la tendencia histórica de las métricas clave, de acuerdo al rango de años y países seleccionados. Es una aproximación para una lectura rápida de los datos.")
+
+        # 1. Preparación de datos (Se calcula una sola vez)
+        df_analysis = df_filtered[df_filtered['country_name'].isin(selected_countries)] if selected_countries else df_filtered
+        
+        start_year = df_filtered['year'].min()
+        is_multi_year = latest_year > start_year
+
+        if df_analysis.empty:
+            st.warning("Selecciona al menos un país y un rango de años válido en el panel lateral para generar el análisis inteligente.")
+            
+        else:
+            # --- 1. Análisis del Último Año (Rendimiento por Métrica) ---
+            st.subheader(f"💡 Resumen Inteligente del Último Año: {latest_year}")
+            
+            analysis_results = generate_metric_analysis(df_analysis, latest_year)
+            for point in analysis_results:
+                st.markdown(f"- {point}")
+
+            # --- 2. Análisis de Tendencias (Solo si hay más de un año) ---
+            if is_multi_year:
+                st.markdown("---")
+                st.subheader(f"⏱️ Análisis Comparativo de Tendencia: {start_year} a {latest_year}")
+                
+                trend_analysis_results = generate_trend_analysis(df_analysis, start_year, latest_year)
+                for point in trend_analysis_results:
+                    st.markdown(point)
+            else:
+                # Mensaje de advertencia si solo hay un año seleccionado
+                st.markdown("---")
+                st.warning("El **Análisis de Tendencias** requiere seleccionar un rango de años (mínimo 2 años) en el filtro lateral para realizar la comparación histórica.")
+
+    # --- Pestaña 3: Análisis de Inflación ---
+    with tab3:
         st.header("Tendencias Inflacionarias en ALC (2000-2023)")
         st.markdown(f"El mapa de calor inferior muestra la Tasa de Inflación anual, **filtrada por los países seleccionados en el menú lateral**, con un límite de escala en **{max_inflation_limit:.1f}%**.")
 
@@ -469,25 +579,6 @@ else:
             st.warning("No se pudieron cargar los datos de outliers de inflación.")
 
 
-    # --- Pestaña 3: Anomalía del PIB ---
-    with tab3:
-        st.header("Divergencia Extrema: Guyana (Crecimiento) vs. Venezuela (Contracción)")
-        st.markdown("El PIB Total de **Guyana** ha mostrado un crecimiento anómalo... En contraste, **Venezuela** ha experimentado una profunda recesión.")
-
-        if not df_outliers_gdp.empty:
-            fig_gdp_anomaly = px.line(
-                df_outliers_gdp, x='year', y='pib_millones', color='country_name',
-                title='PIB Total (Millones USD) de Guyana vs. Venezuela (2010-2023)',
-                labels={'year': 'Año', 'pib_millones': 'PIB Total (Millones USD)', 'country_name': 'País'},
-                markers=True
-            )
-
-            fig_gdp_anomaly.add_vline(x=2020, line_dash="dash", line_color="gray", annotation_text="Inicio de la Explosión del PIB de Guyana", annotation_position="top left")
-            
-            fig_gdp_anomaly.update_layout(yaxis_tickformat="$,.0f")
-            st.plotly_chart(fig_gdp_anomaly, use_container_width=True)
-        else:
-            st.warning("No se pudieron cargar los datos de la anomalía del PIB de Guyana y Venezuela.")
             
     # --- Pestaña 4: Vista Global (Mapa Mundial) ---
     with tab4:
