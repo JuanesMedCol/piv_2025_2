@@ -56,7 +56,7 @@ def get_data_from_db():
                 CASE
                     WHEN w.gdp_current_million IS NULL OR w.gdp_current_million = 0
                     THEN NULL
-                    ELSE w.gdp_current_local / (w.gdp_current_million * 1000000.0)
+                    ELSE ((w.gdp_current_local / 1000000.0) / w.gdp_current_million)
                 END AS costo_moneda_local_usd
             FROM
                 fact_wide w
