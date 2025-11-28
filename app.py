@@ -41,6 +41,7 @@ def get_data_from_db():
         conn = sqlite3.connect(DB_FILE)
 
         # 1. Consulta principal (ALC): Contiene todos los datos limpios de ALC.
+        # El campo costo_moneda_local_usd fue eliminado de esta consulta
         query_main = f"""
         WITH data_cte AS (
             SELECT
@@ -52,12 +53,7 @@ def get_data_from_db():
                 w.exports_percent_gdp AS exportaciones_percent,
                 w.imports_percent_gdp AS importaciones_percent,
                 w.gdp_current_local AS pib_monedalocal,
-                w.gdp_growth_percent AS crecimiento_anual,
-                CASE
-                    WHEN w.gdp_current_million IS NULL OR w.gdp_current_million = 0
-                    THEN NULL
-                    ELSE ((w.gdp_current_local / 1000000.0) / w.gdp_current_million)
-                END AS costo_moneda_local_usd
+                w.gdp_growth_percent AS crecimiento_anual
             FROM
                 fact_wide w
             JOIN
@@ -68,8 +64,6 @@ def get_data_from_db():
                 AND g.country_name NOT IN ({exclusion_placeholders})
         )
         SELECT * FROM data_cte
-        WHERE
-            costo_moneda_local_usd IS NOT NULL AND costo_moneda_local_usd > 0
         ORDER BY
             country_name, year;
         """
@@ -144,7 +138,6 @@ else:
 
     # Selector de Indicador Principal
     indicator_options = {
-        "Costo Moneda Local/USD (Tasa Implícita) [costo_moneda_local_usd]": {'col': 'costo_moneda_local_usd', 'label': 'Costo Moneda Local por 1 USD', 'format': ",.2f", 'unit': ' / USD', 'category': 'Moneda'},
         "PIB Total (Millones USD) [pib_millones]": {'col': 'pib_millones', 'label': 'PIB Total (Millones USD)', 'format': ",.0f", 'unit': '$ ', 'category': 'PIB'},
         "PIB (Moneda Local) [pib_monedalocal]": {'col': 'pib_monedalocal', 'label': 'PIB (Moneda Local)', 'format': ",.0f", 'unit': '', 'category': 'PIB'},
         "Crecimiento Anual (% PIB) [crecimiento_anual]": {'col': 'crecimiento_anual', 'label': 'Crecimiento Anual (% PIB)', 'format': ".1f", 'unit': ' %', 'category': 'PIB'},
@@ -156,7 +149,7 @@ else:
     
     sorted_indicator_keys = sorted(indicator_options.keys(), key=lambda k: indicator_options[k]['category'] + k)
 
-    indicator_key = st.sidebar.selectbox("Selecciona el Indicador Principal:", sorted_indicator_keys, index=1)
+    indicator_key = st.sidebar.selectbox("Selecciona el Indicador Principal:", sorted_indicator_keys, index=0)
 
     indicator_meta = indicator_options[indicator_key]
     y_col = indicator_meta['col']
@@ -207,8 +200,8 @@ else:
         alc_average = np.nan
 
     # --- CONFIGURACIÓN DE ESCALA ---
-    # Aplicar escala logarítmica si el indicador es el costo de la moneda local/USD
-    log_scale = y_col == 'costo_moneda_local_usd'
+    # La escala logarítmica ahora es siempre False
+    log_scale = False
 
     # --- Pestaña 1: Resumen y Tendencias ---
     with tab1:
@@ -226,8 +219,6 @@ else:
                 
                 if unit == '$ ':
                     display_value = unit.strip() + ' ' + display_value
-                elif unit == ' / USD':
-                    display_value = display_value + unit
                 else:
                     display_value = display_value + unit
             
@@ -249,8 +240,6 @@ else:
         with col_line:
             st.subheader(f"Tendencia de {title_kpi}")
             
-            if log_scale:
-                st.info("ℹ️ **Escala Logarítmica:** El eje Y usa una escala logarítmica para manejar el amplio rango de valores (ej. Venezuela).")
             st.markdown("_*Usa el Range Slider inferior para hacer zoom en períodos específicos.*_")
 
             df_plot_line = df_filtered[df_filtered['country_name'].isin(selected_countries)]
@@ -263,7 +252,7 @@ else:
                     title=f'Evolución Anual de {y_label} por País',
                     labels={'year': 'Año', y_col: y_label, 'country_name': 'País'},
                     markers=True,
-                    log_y=log_scale # APLICACIÓN DE ESCALA LOGARÍTMICA
+                    log_y=log_scale # APPLIED LOG SCALE (always False)
                 )
                 
                 if unit == '$ ':
@@ -327,7 +316,7 @@ else:
                     x='country_name', y=y_col,
                     title=f'Distribución de {y_label} por País ({year_range[0]}-{year_range[1]})',
                     labels={'country_name': 'País', y_col: y_label}, notched=True,
-                    log_y=log_scale # APLICACIÓN DE ESCALA LOGARÍTMICA
+                    log_y=log_scale # APPLIED LOG SCALE (always False)
                 )
                 
                 fig_box.update_yaxes(rangemode='normal')
@@ -353,20 +342,40 @@ else:
     # --- Pestaña 2: Análisis de Inflación ---
     with tab2:
         st.header("Tendencias Inflacionarias en ALC (2000-2023)")
-        st.markdown(f"El mapa de calor inferior muestra la Tasa de Inflación anual para toda la región, con un límite de escala en **{max_inflation_limit:.1f}%**.")
+        st.markdown(f"El mapa de calor inferior muestra la Tasa de Inflación anual, **filtrada por los países seleccionados en el menú lateral**, con un límite de escala en **{max_inflation_limit:.1f}%**.")
 
         # --- Heatmap general de Inflación ---
         st.subheader("Inflación Anual por País (Mapa de Calor)")
 
-        heatmap_data = df_main.pivot_table(index='country_name', columns='year', values='inflacion').fillna(0)
+        # Lógica para filtrar por países seleccionados
+        if selected_countries:
+            df_heatmap_filtered = df_main[df_main['country_name'].isin(selected_countries)].copy()
+        else:
+            df_heatmap_filtered = df_main.copy()
+            st.info("ℹ️ No hay países seleccionados en el filtro lateral. Mostrando el Heatmap para todos los países de ALC.")
+        
+        
+        if df_heatmap_filtered.empty:
+            st.warning("No hay datos para generar el Heatmap con los países seleccionados.")
+        else:
+            heatmap_data = df_heatmap_filtered.pivot_table(index='country_name', columns='year', values='inflacion').fillna(0)
 
-        fig_heatmap = go.Figure(data=go.Heatmap(
-                z=heatmap_data.values, x=heatmap_data.columns, y=heatmap_data.index,
-                colorscale='Viridis', zmin=heatmap_data.values.min(), zmax=max_inflation_limit 
-        ))
+            # Usar 0 para zmin si es apropiado, sino el mínimo real.
+            z_min = max(0, heatmap_data.values.min())
+            
+            fig_heatmap = go.Figure(data=go.Heatmap(
+                    z=heatmap_data.values, x=heatmap_data.columns, y=heatmap_data.index,
+                    colorscale='Viridis', zmin=z_min, zmax=max_inflation_limit 
+            ))
 
-        fig_heatmap.update_layout(title='Tasa de Inflación Anual (%): ALC (2000-2023)', xaxis_title='Año', yaxis_title='País', height=800)
-        st.plotly_chart(fig_heatmap, use_container_width=True)
+            fig_heatmap.update_layout(
+                title=f'Tasa de Inflación Anual (%): Países Seleccionados ({df_main["year"].min()}-{df_main["year"].max()})', 
+                xaxis_title='Año', 
+                yaxis_title='País', 
+                # Ajustar la altura dinámicamente según el número de países
+                height=max(500, len(heatmap_data.index) * 25) 
+            )
+            st.plotly_chart(fig_heatmap, use_container_width=True)
 
 
         # --- Heatmap de Outliers de Inflación (Haití, Venezuela, Surinam) ---
@@ -416,7 +425,18 @@ else:
             # Filtramos df_filtered para obtener solo el último año disponible en el rango
             df_global_map = df_filtered[df_filtered['year'] == map_year].copy()
             
-            st.header("🗺️ PIB Total Global (Año mostrado: " + str(map_year) + ")")
+            # NUEVA LÓGICA DE FILTRADO PARA EL MAPA
+            if selected_countries:
+                # Filtrar solo los países seleccionados
+                df_global_map = df_global_map[df_global_map['country_name'].isin(selected_countries)].copy()
+                map_title = f"🗺️ PIB Total (Países Seleccionados - Año: {map_year})"
+                st.header(map_title)
+            else:
+                # Mostrar todos los datos de ALC
+                map_title = f"🗺️ PIB Total Global (Año mostrado: {map_year})"
+                st.header(map_title)
+                st.info("ℹ️ No hay países seleccionados. Mostrando el PIB para toda la región ALC.")
+
             st.markdown("Este mapa muestra la distribución del PIB Total (Millones USD). La **escala de color utiliza el logaritmo de base 10 del PIB** para hacer visibles las diferencias entre países con PIB de diferentes órdenes de magnitud.")
             
             # Reaplicación del cálculo logarítmico para el mapa
